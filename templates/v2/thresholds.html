@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Compute Thresholds</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styleV2.css') }}" />
+</head>
+
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+              <a class="navbar-brand" href="#page-top">NextDOM 2.0</a>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/">Domů</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/about">O aplikaci</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/analyze">Analýza</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/thresholdsnew">Výpočet Prahových Hodnoty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/gallery">Příklady</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/endofwork">SMAZAT</a></li>
+                  </ul>
+                </div>
+            </div>
+        </nav>
+<div class="page-wrapper bg-gra-02 p-t-160 p-b-100 font-poppins">
+<div class="wrapper wrapper--w780">
+<div class="card card-4">
+<div class="card-body">
+<h2 class="title">Settings Of Thresholds</h2>
+<form action='{{ url_for("threshholdsnew")}}' method="post" enctype="multipart/form-data">
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+
+<label class="label">Load Healthy Donors From</label>
+<div class="p-t-10">
+
+<label style="text-decoration: line-through;" class="radio-container m-r-45 " id="ch1">One File (.xlsx)
+<input type="radio" name="Healthy_Donors_From" id="oneFileCheck" value="xlsx">
+<span class="checkmark"></span>
+</label>
+
+
+
+<label class="radio-container m-r-45  ">Folder (.csv)
+<input type="radio" name="Healthy_Donors_From" id="moreFileCheck" value="folder">
+<span class="checkmark"></span>
+</label>
+
+
+
+<label class="radio-container">Training data (ours)
+<input type="radio" name="Healthy_Donors_From" value="default" checked="checked">
+<span class="checkmark"></span>
+</label>
+
+</div>
+</div>
+</div>
+</div>
+<div id="ifYes2" style="display:none"class="h8">
+          <h6>Files Of Healthy Donors: </h6>
+          <input class="input--style-4" type="file" id="myFiles" name="FileOfHealthyDonors" style="margin-bottom: 10px; margin-top: 5px; order: -1; width:  48%" multiple >
+</div>
+<span id="ifYes" style="display:none" class="h8">
+  <h6 >File Of Healthy Donor:</h6 >
+ <input class="input--style-4" type="file" id="myFile" name="FileOfHealthyDonors" style="margin-bottom: 10px; margin-top: 5px;order: -1; width:  48%">
+</span>
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+
+<label class="label">Save As</label>
+<div class="p-t-10">
+<label class="radio-container m-r-45">One File (.xlsx)
+<input type="radio" checked="checked" name="Save_as" value="1" >
+<span class="checkmark"></span>
+</label>
+
+<label class="radio-container">Folder (.csv)
+<input type="radio" name="Save_as" value="0">
+<span class="checkmark"></span>
+</label>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="row row-space">
+<div class="col-2">
+<div class="input-group">
+
+<label class="label">Number of Normals</label>
+<input class="input--style-4" type="number" name="NumberOfNormals" value="0">
+</div>
+</div>
+</div>
+
+
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+<div class="p-t-15">
+<button class="btn btn--radius-2 btn--radiant" id="SendToCreateThreshold" type="submit" style="width: 50%">Compute Thresholds</button>
+</div>
+</div>
+</div></div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<footer class="fixed-bot" style="opacity: 0.5;background-color: #111">
+  <h5 style="text-align: justify; color: white;"> <p style="font-weight: bold;">Tato aplikace vznikla na základě této citované práce</p>Benešová, Adéla. Do not waste the data: A pipeline for evaluation of BCR-ABL1 kinase domain mutation using individual thresholds [poster]. In: 25 th European Hematology association Virtual Congress - EHA 2020, 11.6.-15.10.2020</h5>
+</footer>
+</body>
+
+<script type="text/javascript">
+
+const box = document.getElementById('ifYes');
+const box2 = document.getElementById('ifYes2');
+function handleRadioClick() {
+  if (document.getElementById('oneFileCheck').checked) {
+    box.style.display = 'block';
+  } else {
+    box.style.display = 'none';
+  }
+  if (document.getElementById('moreFileCheck').checked) {
+    box2.style.display = 'block';
+  } else {
+    box2.style.display = 'none';
+  }
+}
+const radioButtons = document.querySelectorAll('input[name="Healthy_Donors_From"]');
+radioButtons.forEach(radio => {
+  radio.addEventListener('click', handleRadioClick);
+});
+
+</script>
+</html>

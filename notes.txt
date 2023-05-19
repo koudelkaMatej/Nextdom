@@ -1,0 +1,6 @@
+how to push
+
+Log in to Docker Hub: docker login
+Tag the image with the Docker Hub username and the desired tag name: docker tag nextdomv2 minikoudy/nextdom2:tagname
+Push the image to Docker Hub: docker push minikoudy/nextdom2:tagname
+Make sure that you have the appropriate permissions to push to the repository minikoudy/nextdom2 on Docker Hub.

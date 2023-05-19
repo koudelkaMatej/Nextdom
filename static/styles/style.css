@@ -1,0 +1,119 @@
+.navbar {
+    text-align: right;
+    color: white;
+    background-color: #04AA6D;
+    border-radius: 25px;
+    padding: 10px;
+    height: 60px;
+}
+
+.a_class {
+    font-size: 50px;
+    margin-right: 20px;
+    color: white;
+    background-color: #04AA88;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.a_class_small {
+    font-size: 20px;
+    margin-right: 20px;
+    color: white;
+    border-radius: 25px;
+}
+
+#SendToAnalyze {
+    width: 350px;
+    height: 50px;
+}
+
+.footer {
+    background-color: #04AA6D;
+    color: white;
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.row {
+    margin-left: -5px;
+    margin-right: -5px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    padding-left: 50px;
+    margin-bottom: 10px;
+}
+
+.column2 {
+    float: left;
+    width: 23%;
+    padding: 10px;
+    padding-left: 50px;
+    margin-bottom: 10px;
+}
+
+.row2 {
+    margin-top: 105px;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: 200px;
+    padding-left: 50px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.table2 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 50%;
+    margin-left: 50px;
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+ .no22XAddressRadioButtons_activator:checked ~ .no22XAddressRadioButtons {
+    display: block;
+    margin-left: 45px;
+ }
+ 
+ /* Begin conditional address */
+ 
+ .outsideAddressTextFields {
+    display: none;
+ }
+ .outsideAddress_activator:checked ~ .outsideAddressTextFields{
+    display: block;
+ }
+ 
+ .button{
+    width: 50%; 
+    margin-left: 50px; 
+    height: 50px; 
+    margin-bottom: 50px;
+    margin-top: 20px;
+ }

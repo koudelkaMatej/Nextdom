@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Homepage</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styleV2.css') }}" />
+</head>
+
+
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#page-top">NextDOM 2.0</a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/">Domů</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/about">O aplikaci</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/analyze">Analýza</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/thresholdsnew">Výpočet Prahových Hodnoty</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/gallery">Příklady</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/endofwork">SMAZAT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<div class="page-wrapper bg-gra-02 p-t-160 p-b-100 font-poppins">
+<div class="wrapper wrapper--w780" >
+<div class="card card-4">
+<div class="card-body" >
+<h2 class="title" style="text-align: center;" >Vítejte na stránce algoritmu NextDOM2.0</h2>
+
+<h5 style="font-weight: bolder;">Výpočet Thresholdů (individuálních mezních hodnot)</h5>
+<br>
+<h6 style="text-align: justify;font-weight: bold;">Pro správné nastavení mezních hodnot je nutné osekvenovat zdravé dárce podle stejného protokolu jako RNA pacientů. Ideální počet zdravých dárců pro výpočet thresholdů je 30.
+
+  Pro ilustraci je možné použít vzorový příklad. Tyto hodnoty však nemusí korespondovat se vzorky vašich pacientů.</h6>
+<br>
+<details>
+  <summary>Postup pro výpočet thresholdů</summary>
+  <br>
+  <ol>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Výpočet thresholds je v navigační liště pod záložkou Výpočet Prahových Hodnot.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Vyberte sekvenační data zdravých dárců. Vstupní soubor může být buď v podobě excelovského souboru, kdy každý list obsahuje data jednoho zdravého dárce nebo každý pacient v jednom csv souboru.
+      (Ilustrační případ obsahuje vzorová data zdravých dárců.)</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Výběr uložení výsledných individuálních mezních hodnot. Buď je možné je uložit v jednom excelovském souboru nebo ve více souborech.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Number of Normals slouží k optimalizaci výsledku, pokud některý ze zdravých dárců negativně ovlivňuje výpočet nebo výpočet trvá příliš dlouho.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Compute thresholds spustí výpočet.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Výsledková stránka obsahuje grafy odchylek rozptylu hodnot. Umožňuje identifikaci outliers (odlehlých hodnot). Umožňuje také stáhnout soubory s vypočítanými thresholdy. Výsledný soubor/y lze nastavit jako výchozí možnost výpočtu pro analýzu pacientských vzorků.</li>
+  </ol>
+</details>
+<br>
+<h5  style="font-weight: bolder;" >Analýza pacientských vzorků.</h5>
+<br>
+<h6 style="text-align: justify;font-weight: bold;">Do každé analýzy by měla být zařazena data pacientů a také data zdravých dárců, která slouží jako negativní kontrola.
+
+  Analýza pacientských vzorků umožňuje aplikovat individuální thresholdy na pacientská data a stanovit statisticky významné varianty, také budou zvýrazněné varianty, které jsou dle literatury relevantní pro chronickou myeloidní leukémii.
+  
+  Výsledek může být vztažen ke dvěma hodnotám Limits of Detection (LoD) a Limits of Quantification (LoQ). První z uvedených slouží ke kontrole pozic zdravých dárců  a druhé obsahuje výsledné relevantní varianty s barevným rozlišením pro lepší orientaci a interpretaci.</h6>
+<br>
+<details>
+  <summary>Postup analýzy</summary>
+  <br>
+  <ol>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">K výpočtu analýzi je potřeba kliknout v horní navigační liště na Analýza.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Name Of Run obsahuje jméno analýzy.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Sekvenační soubory v Part 1 obsahující počty čtení bází na jednotlivých pozicích.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Data z variant calling jsou součástí Part 2. To je soubory, které obsahují seznam bodových mutací na jednotlivých pozicích včetně záměny aminokyselin, jejichž pravděpodobnost je větší než 0,5 %. (Vzorové soubory jsou uvedeny v <a href="{{ url_for('treningData') }}">Klikněte sem</a>)</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Dále je nutné vybrat úroveň limitů.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Výsledek je možné uložit jako soubor xlsx nebo csv.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify">Po kliknutí na Analyze se provede analýza.</li>
+    <li style="padding: 5px; margin-left: 15px;text-align: justify"><p style="color: red; font-weight: bold">Upozorňujeme, že barevné zvýraznění se provede pouze u souboru typu .xlsx.</p></li>
+  </ol>
+</details>
+<br>
+<h5 style="text-align: justify">Během analýzy se vypisuje log, který se zobrazí pod tlačítkem analýzy. Pokud budete chtít vidět zpětně log, stačí napsat do nameOfRun stejné jméno jako při první analýze a zobrazí se Vám ten samý log. Na konci analýzy si budete moc výsledek stáhnout v souboru typu .zip.</h5>
+<br>
+<h5 style="text-align: justify">Poté co provedete výpočty, je potřeba tyto soubory smazat. Kliknutím na text v horní liště smažete veškerý nahraný obsah. </h5>
+<br>
+  <p style="color: red; font-weight: bold;text-align: justify;">Po provedení výpočtů je doporučeno smazat soubory. Pokud tak neučiníte tlačítkem SMAZAT. Soubory budou smazány nejpozději za 24 hodin.</p>
+</h5>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<footer class="fixed-bot" style="opacity: 0.5;background-color: #111">
+  <h5 style="text-align: justify; color: white;"> <p style="font-weight: bold;">Tato aplikace vznikla na základě této citované práce</p>Benešová, Adéla. Do not waste the data: A pipeline for evaluation of BCR-ABL1 kinase domain mutation using individual thresholds [poster]. In: 25 th European Hematology association Virtual Congress - EHA 2020, 11.6.-15.10.2020</h5>
+</footer>
+</body>
+
+</html>

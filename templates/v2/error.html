@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Analyze</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styleV2.css') }}" />
+<title>Error Page</title>
+</head>
+
+
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#page-top">Next Dom</a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/analyze">Analyze</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/thresholdsnew">Thresholds</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/gallery">Examples</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/endofwork">Vymazat všechna nahraná data</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<div class="page-wrapper bg-gra-02 p-t-160 p-b-100 font-poppins">
+<div class="wrapper wrapper--w780" >
+<div class="card card-4">
+<div class="card-body" >
+    <h1 style="text-align:center;color: #b31c47;font-weight: bold;">Vyskytla se chyba: {{ error_message }}</h1>
+</div>
+</div>
+</div>
+</div>
+<footer class="fixed-bot" style="opacity: 0.5;background-color: #111">
+    <h5 style="text-align: justify; color: white;"> <p style="font-weight: bold;">Tato aplikace vznikla na základě této citované práce</p>Benešová, Adéla. Do not waste the data: A pipeline for evaluation of BCR-ABL1 kinase domain mutation using individual thresholds [poster]. In: 25 th European Hematology association Virtual Congress - EHA 2020, 11.6.-15.10.2020</h5>
+  </footer>
+</body>
+</html>

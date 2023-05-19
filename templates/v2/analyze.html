@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Analyze</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styleV2.css') }}" />
+</head>
+
+
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#page-top">NextDOM 2.0</a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/">Domů</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/about">O aplikaci</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/analyze">Analýza</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/thresholdsnew">Výpočet Prahových Hodnoty</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/gallery">Příklady</a></li>
+                      <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/endofwork">SMAZAT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<div class="page-wrapper bg-gra-02 p-t-160 p-b-100 font-poppins">
+<div class="wrapper wrapper--w780" >
+<div class="card card-4">
+<div class="card-body" >
+<h2 class="title">Analyze</h2>
+<form action='{{ url_for("analyze")}}' method="POST" enctype="multipart/form-data">
+
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+<label class="label" for="NameOfRun">Name Of Run</label>
+<div class="p-t-10">
+<input class="input--style-4" type="text" id="NameOfRun" name="NameOfRun" style="order: -1; width: 50%" />
+</div>
+</div>
+</div>
+</div>
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+<label class="label">Part 1</label>
+<div class="p-t-10">
+<input class="input--style-4" style="width: 50%" type="file" id="part1" name="part1" style="margin-bottom: 10px; margin-top: 5px; order: -1;" multiple >
+</label>
+<label class="label" style="margin-top: 10px">Part 2</label>
+<div class="p-t-10">
+<input class="input--style-4" style="width: 50%" type="file" id="part2" name="part2" style="margin-bottom: 10px; margin-top: 5px; order: -1;" multiple >
+</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+
+<label class="label">Limits</label>
+<div class="p-t-10">
+
+<label class="radio-container m-r-45 " id="ch1">LoD
+<input type="radio" name="Limits" id="LoD" checked="checked" value="0">
+<span class="checkmark"></span>
+</label>
+
+
+
+<label class="radio-container m-r-45  ">LoQ
+<input type="radio" name="Limits" id="LoQ" value="1">
+<span class="checkmark"></span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+
+<label class="label">Save As</label>
+<div class="p-t-10">
+<label class="radio-container m-r-45">One File (.xlsx)
+<input type="radio" checked="checked" name="saveAs" value="1">
+<span class="checkmark"></span>
+</label>
+
+<label style="text-decoration: line-through;" class="radio-container">Folder (.csv)
+<input type="radio" name="saveAs" value="0">
+<span class="checkmark"></span>
+</label>
+
+</div>
+</div>
+</div>
+</div>
+<div class="row row-space">
+<div class="col">
+<div class="input-group">
+<div class="p-t-15">
+<button class="btn btn--radius-2 btn--radiant" type="submit" style="width: 50%">Analyze and Download</button>
+</div>
+</div>
+</div>
+<div class="col">
+    <div class="input-group">
+        <div class="p-t-10">
+            <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/static/main.js"></script>
+    <div id="div1" style="color:#b31c47;font-size: 110%;overflow: auto; width: 120%; margin-left: -5%;">
+        <script>
+            setInterval()
+        </script>
+    </div>
+    
+    
+    </script>
+    </div>
+    </div>
+    </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<footer class="fixed-bot" style="opacity: 0.5;background-color: #111">
+    <h5 style="text-align: justify; color: white;"> <p style="font-weight: bold;">Tato aplikace vznikla na základě této citované práce</p>Benešová, Adéla. Do not waste the data: A pipeline for evaluation of BCR-ABL1 kinase domain mutation using individual thresholds [poster]. In: 25 th European Hematology association Virtual Congress - EHA 2020, 11.6.-15.10.2020</h5>
+</footer>
+</body>
+<script>
+function alertFunc() {
+    var nameOfRun = $("#NameOfRun").val();
+    $.ajax({
+        url: "/static/uploadedFiles/Analyze/" + nameOfRun+ '_app.log', 
+        dataType: "text",
+        success: function (data) {
+            console.log(data)
+            $("#div1").html(    '<label class="label" >Log</label>'+"<pre>" + data + "</pre>");
+        }
+    });
+}
+setInterval(alertFunc, 3000);
+</script>
+</html>

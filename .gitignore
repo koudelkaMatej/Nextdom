@@ -1,0 +1,54 @@
+# Python-related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pycachefile
+
+# Virtual environments
+venv/
+env/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# IDE-specific files
+*.pydevproject
+*.project
+*.pycproject
+*.idea/
+*.vscode/
+
+# Miscellaneous
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+*.log
+*.swp
+*.swo
+*.DS_Store
+*.pycachefile
+*.pyz
+*.pyw
+*.pyo
+*.pyc
+*.bak
+*.tmp
+*.cache/
+*.coverage
+*.pyd
+
+# Dependency management
+pip-selfcheck.json
+requirements.txt
